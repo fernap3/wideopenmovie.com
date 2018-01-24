@@ -18,15 +18,54 @@ function onPageLoad()
 	incomingHeader.classList.add("floating-section-header");
 	document.body.appendChild(incomingHeader);
 
-	window.onscroll = () => {
+	window.onscroll = () =>
+	{
 		incomingHeader.textContent = getFloatingSectionHeaderText();
 		//getFloatingSectionHeaderPosition();
 
-		const aboutHeader = document.querySelector("#pane-about > h1");
-		const aboutHeaderRect = aboutHeader.getBoundingClientRect();
-		incomingHeader.style.left = aboutHeaderRect.left + "px";
-		incomingHeader.style.top = Math.max(0, aboutHeaderRect.top) + "px";
+		const currentPane = getCurrentPane();
+
+		if (currentPane && currentPane.id !== "pane-home")
+		{
+			const paneHeader = currentPane.querySelector(".pane-title");
+			const paneTitle = paneHeader.textContent;
+			const paneTitleRect = paneHeader.getBoundingClientRect();
+			incomingHeader.style.left = paneTitleRect.left + "px";
+			incomingHeader.style.top = Math.max(navbar.offsetHeight / 2 - paneHeader.offsetHeight / 2, paneTitleRect.top) + "px";
+			incomingHeader.textContent = paneTitle;
+			incomingHeader.style.display = "";
+		}
+		else
+		{
+			incomingHeader.style.display = "none";
+		}
+
+
+		
 	};
+}
+
+function getCurrentPane()
+{
+	const panes = Array.from(document.querySelectorAll(".pane")).reverse();
+
+	for (let pane of panes)
+	{
+		if (isScrolledPastPane(pane))
+			return pane;
+	}
+}
+
+function isScrolledPastPane(pane)
+{
+	const navbar = document.getElementById("navbar");
+	const paneBounds = pane.getBoundingClientRect();
+	return paneBounds.top <= navbar.offsetHeight;
+}
+
+function getIncomingHeaderTop()
+{
+
 }
 
 function getFloatingSectionHeaderText()
