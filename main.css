@@ -1,16 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,700');
+
+@keyframes present-in {
+	from {
+		transform: translateX(-50px);
+		opacity: 0;
+	}
+
+	to {
+		transform: none;
+		opacity: 1;
+	}
+}
+
 body {
 	margin: 0;
-	background: black;
+	background: #060606;
 	font-size: 16px;
 	display: flex;
 	flex-direction: column;
-	font-family: sans-serif;
+	font-family: Dosis;
 }
 
 #navbar {
 	position: sticky;
 	top: 0;
-	background: black;
+	background: #060606;
 	display: flex;
 	justify-content: center;
 	height: 50px;
@@ -23,6 +37,7 @@ body {
 	border: none;
 	cursor: pointer;
 	font-size: 1.1em;
+	font-family: inherit;
 }
 
 #navbar button:last-child {
@@ -30,13 +45,13 @@ body {
 }
 
 .pane {
-	background: black;
+	background: #060606;
 	color: white;
 }
 
 #pane-home {
 	background: white;
-	color: black;
+	color: #060606;
 	height: calc(1vh * 100 - 50px);
 	display: flex;
     flex-direction: column;
@@ -61,16 +76,20 @@ body {
 }
 
 #pane-contact {
-	height: 200px;
+	min-height: calc(100vh - 50px);
 }
 
 .intro-prefix {
 	margin-bottom: 1em;
+	animation-name: present-in;
+	animation-duration: 8s;
+	animation-timing-function: cubic-bezier(0.21, 1.02, 0.36, 1.01);
+	animation-fill-mode: backwards;
 }
 
 .intro-title {
 	text-transform: uppercase;
 	font-size: 6em;
 	font-weight: 100;
-	letter-spacing: 6px;
+	letter-spacing: .3em;
 }
