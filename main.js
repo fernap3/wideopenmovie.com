@@ -1,5 +1,7 @@
 var incomingHeader;
 var outgoingHeader;
+var navbarCurUnderline;
+var navbarPrevUnderline;
 
 function onPageLoad()
 {
@@ -10,11 +12,24 @@ function onPageLoad()
 	{
 		button.onclick = (evt) => {
 			const sectionId = button.getAttribute("data-sectionlink");
-			const targetPane = document.getElementById("pane-" + sectionId);
-			const navBarHeight = navbar.offsetHeight;
-			document.body.scrollTop = targetPane.offsetTop - navBarHeight;
+
+			if (sectionId === "home")
+			{
+				document.body.scrollTop = 0;
+				return;
+			}
+
+			const target = document.querySelector("#pane-" + sectionId + " > .pane-title");
+			document.body.scrollTop = target.offsetTop;
 		};
 	}
+
+	navbarCurUnderline = document.createElement("div");
+	navbarCurUnderline.className = "navbar-underline";
+	navbar.appendChild(navbarCurUnderline);
+	navbarPrevUnderline = document.createElement("div");
+	navbarPrevUnderline.className = "navbar-underline";
+	navbar.appendChild(navbarPrevUnderline);
 
 	const aboutHeader = document.querySelector("#pane-about > h1");
 	incomingHeader = aboutHeader.cloneNode(true);
@@ -28,7 +43,16 @@ function onPageLoad()
 	{
 		renderIncomingHeader();
 		renderOutgoingHeader();
+		renderNavbarUnderlines();
 	};
+}
+
+function renderNavbarUnderlines()
+{
+	const prevPane = getPreviousPane();
+	const curPane = getCurrentPane();
+
+
 }
 
 function renderOutgoingHeader()
@@ -47,9 +71,27 @@ function renderOutgoingHeader()
 		const incomingHeaderRect = incomingHeader.getBoundingClientRect();
 		const outgoingHeaderRect = outgoingHeader.getBoundingClientRect();
 
-		outgoingHeader.style.opacity = Math.min(1, (incomingHeaderRect.top - outgoingHeaderRect.top) / 100) + "";
-
+		const outgoingHeaderOpacity = Math.min(1, (incomingHeaderRect.top - outgoingHeaderRect.top) / 100);
+		outgoingHeader.style.opacity = outgoingHeaderOpacity + "";
 		outgoingHeader.style.display = "";
+
+		// Update navbar line positions and opacities
+		navbarPrevUnderline.style.opacity = outgoingHeaderOpacity + "";
+		navbarCurUnderline.style.opacity = 1 - outgoingHeaderOpacity + "";
+
+		const prevNavButton = navbar.querySelector("[data-sectionlink=" + prevPane.id.substr(5) + "]");
+
+		if (prevNavButton)
+		{
+			const prevNavButtonRect = prevNavButton.getBoundingClientRect();
+			navbarPrevUnderline.style.left = prevNavButtonRect.left;
+			navbarPrevUnderline.style.width = prevNavButtonRect.width;
+		}
+
+		const curNavButton = navbar.querySelector("[data-sectionlink=" + curPane.id.substr(5) + "]");
+		const curNavButtonRect = curNavButton.getBoundingClientRect();
+		navbarCurUnderline.style.left = curNavButtonRect.left;
+		navbarCurUnderline.style.width = curNavButtonRect.width;
 	}
 	else
 	{
