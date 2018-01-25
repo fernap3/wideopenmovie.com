@@ -15,12 +15,12 @@ function onPageLoad()
 
 			if (sectionId === "home")
 			{
-				document.body.scrollTop = 0;
+				scrollToElement(document.body);				
 				return;
 			}
 
 			const target = document.querySelector("#pane-" + sectionId + " > .pane-title");
-			document.body.scrollTop = target.offsetTop;
+			scrollToElement(target);
 		};
 	}
 
@@ -146,4 +146,38 @@ function isScrolledPastPane(pane)
 	const navbar = document.getElementById("navbar");
 	const paneBounds = pane.getBoundingClientRect();
 	return paneBounds.top <= navbar.offsetHeight;
+}
+
+function scrollToElement(target)
+{
+	//document.body.scrollTop = target.offsetTop;
+	const scrollTopInit = document.body.scrollTop;
+	const distance = target.offsetTop - document.body.scrollTop;
+	const duration = 1000; // 1s
+
+	let lastTimestamp = null;
+	let t = 0;
+
+	let doScroll = (timestamp) =>
+	{
+		lastTimestamp = lastTimestamp || timestamp;
+		
+		let dt = timestamp - lastTimestamp;
+		console.log(dt);
+
+		if (distance > 0)
+			document.body.scrollTop = Math.min(target.offsetTop, scrollTopInit + (t / 1000 * distance));
+		else
+			document.body.scrollTop = Math.max(target.offsetTop, scrollTopInit + (t / 1000 * distance));
+		
+		t += dt;
+		
+		if ((distance > 0 && document.body.scrollTop < target.offsetTop) ||
+			(distance < 0 && document.body.scrollTop > target.offsetTop))
+			requestAnimationFrame(doScroll);
+		
+		lastTimestamp = timestamp;
+	}
+
+	requestAnimationFrame(doScroll);
 }
