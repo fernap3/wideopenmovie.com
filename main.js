@@ -163,7 +163,6 @@ function scrollToElement(target)
 		lastTimestamp = lastTimestamp || timestamp;
 		
 		let dt = timestamp - lastTimestamp;
-		console.log(dt);
 
 		if (distance > 0)
 			document.body.scrollTop = Math.min(target.offsetTop, scrollTopInit + (t / 1000 * distance));
