@@ -214,4 +214,15 @@ body {
 	height: 100%;
 	display: flex;
 	align-items: center;
+	padding-right: 1em;
+}
+
+.social-link {
+	height: 24px;
+	filter: brightness(50%);
+	transition: all .2s cubic-bezier(0.21, 1.02, 0.36, 1.01);
+}
+
+.social-link:hover {
+	filter: brightness(80%);
 }
