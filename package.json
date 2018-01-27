@@ -1,0 +1,27 @@
+{
+  "name": "wideopenmovie.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernap3/wideopenmovie.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernap3/wideopenmovie.com/issues"
+  },
+  "homepage": "https://github.com/fernap3/wideopenmovie.com#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^3.2.4",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.6.2"
+  }
+}
