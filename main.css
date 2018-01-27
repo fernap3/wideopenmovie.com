@@ -73,9 +73,6 @@ body {
 
 #navbar button:focus {
 	outline: none;
-    border-bottom: 1px dashed #383737;
-    border-top: 1px solid transparent;
-    box-sizing: border-box;
 }
 
 #navbar button:last-child {

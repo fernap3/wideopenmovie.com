@@ -129,33 +129,48 @@ function isScrolledPastPane(pane)
 
 function scrollToElement(target)
 {
-	//document.body.scrollTop = target.offsetTop;
 	const scrollTopInit = document.body.scrollTop;
 	const distance = target.offsetTop - document.body.scrollTop;
-	const duration = 1000; // 1s
+	const duration = 600; // in milliseconds
 
-	let lastTimestamp = null;
-	let t = 0;
+	let startTime = null;
+	let bezier = new CubicBezier(0, .75, .95, 1);
 
 	let doScroll = (timestamp) =>
 	{
-		lastTimestamp = lastTimestamp || timestamp;
-		
-		let dt = timestamp - lastTimestamp;
+		startTime = startTime || timestamp;
 
-		if (distance > 0)
-			document.body.scrollTop = Math.min(target.offsetTop, scrollTopInit + (t / 1000 * distance));
-		else
-			document.body.scrollTop = Math.max(target.offsetTop, scrollTopInit + (t / 1000 * distance));
-		
-		t += dt;
-		
-		if ((distance > 0 && document.body.scrollTop < target.offsetTop) ||
-			(distance < 0 && document.body.scrollTop > target.offsetTop))
+		const t = Math.min(1, (timestamp - startTime) / duration);
+		let newPosition = scrollTopInit + (bezier.Solve(t) * distance);
+
+		document.body.scrollTop = newPosition;
+
+		if (t < 1)
 			requestAnimationFrame(doScroll);
-		
-		lastTimestamp = timestamp;
 	}
 
 	requestAnimationFrame(doScroll);
+}
+
+class CubicBezier
+{
+	constructor(x0, y0, x1, y1)
+	{
+		this.x0 = x0;
+		this.y0 = y0;
+		this.x1 = x1;
+		this.y1 = y1;
+	}
+
+	/** Returns the y-coordinate of the bezier curve at time t [0,1] */
+	Solve(t)
+	{
+		if (t < 0 || t > 1)
+			throw "t must be between 0 and 1 inclusive";
+		
+		return (this.x0 * ((1 - t) ** 3)) +
+			   (3 * this.y0 * ((1 - t)**2) * t) + 
+			   (3 * this.x1 * (1 - t) * (t**2)) + 
+			   (this.y1 * (t**3));
+	}
 }
