@@ -35,11 +35,14 @@ function onPageLoad()
 	document.body.appendChild(incomingHeader);
 	document.body.appendChild(outgoingHeader);
 
-	window.onscroll = () =>
-	{
-		renderIncomingHeader();
-		renderOutgoingHeader();
-	};
+	window.onscroll = () => updatePageState();
+	updatePageState();
+}
+
+function updatePageState()
+{
+	renderIncomingHeader();
+	renderOutgoingHeader();
 }
 
 function renderOutgoingHeader()

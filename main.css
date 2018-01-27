@@ -206,10 +206,10 @@ body {
 }
 
 .navbar-underline {
-	background: #c1c1c1;
+	background: #9e9e9e;
 	position: absolute;
 	height: 1px;
-	bottom: 7px;
+	bottom: 9px;
 	transition: all .2s ease-out;
 }
 
