@@ -4,6 +4,7 @@ const sourcemaps = require("gulp-sourcemaps");
 const rimraf = require("rimraf");
 const uglify = require("gulp-uglifyes");
 const rename = require("gulp-rename");
+const cleancss = require("gulp-clean-css");
 
 gulp.task("build-debug", () =>
 {
@@ -11,6 +12,7 @@ gulp.task("build-debug", () =>
 		gulp.src(["images/**/*"]).pipe(gulp.dest("deploy/images"));
 		gulp.src(["src/**/*.html"]).pipe(gulp.dest("deploy"));
 		gulp.src(["src/**/*.css"]).pipe(gulp.dest("deploy"));
+		gulp.src(["src/**/*.ts"]).pipe(gulp.dest("deploy"));
 		
 		const tsProject = ts.createProject("tsconfig.json");
 		return tsProject.src()
@@ -26,7 +28,9 @@ gulp.task("build-deploy", () =>
 	rimraf("deploy", () => {
 		gulp.src(["images/**/*"]).pipe(gulp.dest("deploy/images"));
 		gulp.src(["src/**/*.html"]).pipe(gulp.dest("deploy"));
-		gulp.src(["src/**/*.css"]).pipe(gulp.dest("deploy"));
+		gulp.src(["src/**/*.css"])
+			.pipe(cleancss())
+			.pipe(gulp.dest("deploy"));
 
 		const tsProject = ts.createProject("tsconfig.json");
 		return tsProject.src()
