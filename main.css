@@ -206,10 +206,11 @@ body {
 }
 
 .navbar-underline {
-	background: white;
+	background: #c1c1c1;
 	position: absolute;
 	height: 1px;
 	bottom: 7px;
+	transition: all .2s ease-out;
 }
 
 .social-buttons {

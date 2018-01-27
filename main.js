@@ -1,7 +1,6 @@
 var incomingHeader;
 var outgoingHeader;
-var navbarCurUnderline;
-var navbarPrevUnderline;
+var navbarUnderline;
 
 function onPageLoad()
 {
@@ -24,12 +23,9 @@ function onPageLoad()
 		};
 	}
 
-	navbarCurUnderline = document.createElement("div");
-	navbarCurUnderline.className = "navbar-underline";
-	navbar.appendChild(navbarCurUnderline);
-	navbarPrevUnderline = document.createElement("div");
-	navbarPrevUnderline.className = "navbar-underline";
-	navbar.appendChild(navbarPrevUnderline);
+	navbarUnderline = document.createElement("div");
+	navbarUnderline.className = "navbar-underline";
+	navbar.appendChild(navbarUnderline);
 
 	const aboutHeader = document.querySelector("#pane-about > h1");
 	incomingHeader = aboutHeader.cloneNode(true);
@@ -43,16 +39,7 @@ function onPageLoad()
 	{
 		renderIncomingHeader();
 		renderOutgoingHeader();
-		renderNavbarUnderlines();
 	};
-}
-
-function renderNavbarUnderlines()
-{
-	const prevPane = getPreviousPane();
-	const curPane = getCurrentPane();
-
-
 }
 
 function renderOutgoingHeader()
@@ -74,29 +61,18 @@ function renderOutgoingHeader()
 		const outgoingHeaderOpacity = Math.min(1, (incomingHeaderRect.top - outgoingHeaderRect.top) / 100);
 		outgoingHeader.style.opacity = outgoingHeaderOpacity + "";
 		outgoingHeader.style.display = "";
-
-		// Update navbar line positions and opacities
-		navbarPrevUnderline.style.opacity = outgoingHeaderOpacity + "";
-		navbarCurUnderline.style.opacity = 1 - outgoingHeaderOpacity + "";
-
-		const prevNavButton = navbar.querySelector("[data-sectionlink=" + prevPane.id.substr(5) + "]");
-
-		if (prevNavButton)
-		{
-			const prevNavButtonRect = prevNavButton.getBoundingClientRect();
-			navbarPrevUnderline.style.left = prevNavButtonRect.left;
-			navbarPrevUnderline.style.width = prevNavButtonRect.width;
-		}
-
-		const curNavButton = navbar.querySelector("[data-sectionlink=" + curPane.id.substr(5) + "]");
-		const curNavButtonRect = curNavButton.getBoundingClientRect();
-		navbarCurUnderline.style.left = curNavButtonRect.left;
-		navbarCurUnderline.style.width = curNavButtonRect.width;
 	}
 	else
 	{
 		outgoingHeader.style.display = "none";
 	}
+
+	// Update navbar underline position
+	const curNavButton = navbar.querySelector("[data-sectionlink=" + curPane.id.substr(5) + "]");
+	const curNavButtonRect = curNavButton.getBoundingClientRect();
+	const lineWidth = curNavButtonRect.width - 10;
+	navbarUnderline.style.left = curNavButtonRect.left + (curNavButtonRect.width / 2) - (lineWidth / 2) + "px";
+	navbarUnderline.style.width = lineWidth + "px";
 }
 
 function renderIncomingHeader()
