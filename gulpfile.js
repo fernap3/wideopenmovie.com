@@ -5,6 +5,7 @@ const rimraf = require("rimraf");
 const uglify = require("gulp-uglifyes");
 const rename = require("gulp-rename");
 const cleancss = require("gulp-clean-css");
+const shell = require("gulp-shell");
 
 gulp.task("build-debug", () =>
 {
@@ -37,6 +38,7 @@ gulp.task("build-deploy", () =>
 			.pipe(tsProject()).js
 			.pipe(gulp.dest("deploy/"))
 			.pipe(uglify())
-			.pipe(gulp.dest("deploy/"));
+			.pipe(gulp.dest("deploy/"))
+			.pipe(shell(["aws s3 cp deploy/ s3://wideopenmovie.com/ --recursive"]));
 	});
 });
