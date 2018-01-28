@@ -250,13 +250,40 @@ body {
 }
 
 .social-link {
-	height: 24px;
-	filter: brightness(50%);
-	transition: all .2s cubic-bezier(0.21, 1.02, 0.36, 1.01);
+	margin-right: .6em;
+	transition: opacity .5s ease-out;
 }
 
-.social-link:hover {
+.social-link:last-child {
+	margin-right: 0;
+}
+
+.social-link > img {
+	height: 26px;
+	filter: brightness(50%);
+	transition: all .2s cubic-bezier(0.21, 1.02, 0.36, 1.01);
+	border-radius: 2px;
+	padding: 3px 0;
+}
+
+.social-link > img:hover {
 	filter: brightness(80%);
+}
+
+.social-link.indiegogo {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.navbar-fixed .social-link.indiegogo {
+	opacity: 1;
+	pointer-events: unset;
+}
+
+.social-link.indiegogo > img {
+	background: #ff4099;
+	height: 20px;
+	padding: 3px 4px;
 }
 
 .trailer-video {
@@ -296,7 +323,7 @@ body {
 	}
 }
 
-.crowdfund-button-main {
+.crowdfund-button {
 	background: #fa1681;
 	color: white;
 	font-size: 17px;
@@ -311,11 +338,11 @@ body {
 	text-decoration: none;
 }
 
-.crowdfund-button-main:hover {
+.crowdfund-button:hover {
 	background: #ff4099;
 }
 
-.crowdfund-button-main > div:last-child,
+.crowdfund-button > div:last-child,
 .moreinfo-button > div:last-child {
 	font-size: 2em;
 }
@@ -344,4 +371,8 @@ body {
 	background-size: 46px;
 	background-repeat: no-repeat;
 	background-position: bottom 6px center;
+}
+
+.moreinfo-button:hover {
+	background-color: #292929;
 }

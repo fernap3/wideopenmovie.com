@@ -3,7 +3,8 @@ class App
 	private incomingHeader: HTMLElement;
 	private outgoingHeader: HTMLElement;
 	private navbarUnderline: HTMLElement;
-	private navbar: HTMLElement
+	private navbar: HTMLElement;
+	private navbarFixed: boolean;
 
 	constructor()
 	{
@@ -47,6 +48,16 @@ class App
 
 	private UpdatePageState()
 	{
+		const navbarFixed = this.navbar.getBoundingClientRect().top <= 0;
+		if (this.navbarFixed === null || navbarFixed !== this.navbarFixed)
+		{
+			this.navbarFixed = navbarFixed;
+			if (navbarFixed)
+				document.body.classList.add("navbar-fixed");
+			else
+				document.body.classList.remove("navbar-fixed");
+		}
+		
 		this.RenderIncomingHeader();
 		this.RenderOutgoingHeader();
 		this.RenderNavbarUnderline();
