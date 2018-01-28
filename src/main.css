@@ -152,6 +152,7 @@ body {
 	animation-fill-mode: both;
 	font-family: Dosis;
 	font-size: 11.4vw;
+	margin-bottom: 2em;
 }
 
 @media screen and (min-width: 600px) {
@@ -326,12 +327,29 @@ body {
 .crowdfund-button {
 	background: #fa1681;
 	color: white;
-	font-size: 17px;
+	font-size: 12px;
 	padding: 0.7em 3.2em;
 	position: absolute;
-	bottom: 12vh;
-	right: 12vw;
-	animation: 1s ease-in 3s 1 normal both running dim-to-full
+	animation: 1s ease-in 3s 1 normal both running dim-to-full;
+	margin: auto;
+	bottom: 124px;
+}
+
+@media screen and (orientation: landscape) {
+	.crowdfund-button {
+		bottom: 22vh;
+		right: 12vw;
+		font-size: 10px;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.crowdfund-button {
+		font-size: 17px;
+		padding: 0.7em 3.2em;
+		bottom: 12vh;
+		right: 12vw;
+	}
 }
 
 .link-button {
@@ -360,19 +378,35 @@ body {
 .moreinfo-button {
 	background: #060606;
 	color: white;
-	font-size: 17px;
+	font-size: 10px;
 	padding: 0.7em 3.2em;
 	position: absolute;
-	bottom: 12vh;
-	left: 12vw;
+	bottom: 60px;
 	animation: 1s ease-in 3s 1 normal both running dim-to-full,
 	           1s ease-in-out 3.5s infinite alternate both running rise;
 	background-image: url(images/arrow-down.svg);
-	background-size: 46px;
+	background-size: 26px;
 	background-repeat: no-repeat;
 	background-position: bottom 6px center;
 }
 
 .moreinfo-button:hover {
 	background-color: #292929;
+}
+
+@media screen and (orientation: landscape) {
+	.moreinfo-button {
+		bottom: 22vh;
+		left: 12vw;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.moreinfo-button {
+		font-size: 17px;
+		padding: 0.7em 3.2em;
+		bottom: 12vh;
+		left: 12vw;
+		background-size: 46px;
+	}
 }
