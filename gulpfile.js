@@ -11,6 +11,7 @@ gulp.task("build-debug", () =>
 {
 	rimraf("deploy", () => {
 		gulp.src(["images/**/*"]).pipe(gulp.dest("deploy/images"));
+		gulp.src(["resources/**/*"]).pipe(gulp.dest("deploy"));
 		gulp.src(["src/**/*.html"]).pipe(gulp.dest("deploy"));
 		gulp.src(["src/**/*.css"]).pipe(gulp.dest("deploy"));
 		gulp.src(["src/**/*.ts"]).pipe(gulp.dest("deploy"));
@@ -28,6 +29,7 @@ gulp.task("build-deploy", () =>
 {
 	rimraf("deploy", () => {
 		gulp.src(["images/**/*"]).pipe(gulp.dest("deploy/images"));
+		gulp.src(["resources/**/*"]).pipe(gulp.dest("deploy"));
 		gulp.src(["src/**/*.html"]).pipe(gulp.dest("deploy"));
 		gulp.src(["src/**/*.css"])
 			.pipe(cleancss())
