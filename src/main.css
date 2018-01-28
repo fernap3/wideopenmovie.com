@@ -70,13 +70,6 @@ body {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,.1), 0px -8px 54px 0px rgba(0,0,0,0.3);
 }
 
-@media screen and (min-width: 600px) {
-	.navbar-inner {
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-	}
-}
-
 .navbar-fixed .navbar-inner {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
@@ -104,6 +97,20 @@ body {
 	}
 }
 
+@media screen and (min-width: 600px) and (max-width: 800px) {
+	.navbar-fixed #navbar {
+		font-size: .8em;
+	}
+
+	.navbar-fixed .navbar-inner {
+		justify-content: flex-end;
+	}
+
+	.navbar-fixed #navbar button[data-sectionlink="contact"] {
+		margin-right: 100px;
+	}
+}
+
 #navbar button:focus {
 	outline: none;
 }
@@ -114,9 +121,18 @@ body {
 
 .pane {
 	background: #060606;
-	padding: 2em;
+	padding: 2em 0;
 	max-width: 1200px;
-	width: calc(100% - 4em);
+	width: 100%;
+	text-align: center;
+}
+
+@media screen and (min-width: 420px) {
+	.pane {
+		padding: 2em;
+		width: calc(100% - 4em);
+		text-align: left;
+	}
 }
 
 .pane-title {
