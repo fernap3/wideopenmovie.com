@@ -87,7 +87,7 @@ body {
 	padding: .5em;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 660px) {
 	#navbar {
 		font-size: 1.1em;
 	}
@@ -97,7 +97,7 @@ body {
 	}
 }
 
-@media screen and (min-width: 600px) and (max-width: 800px) {
+@media screen and (min-width: 660px) and (max-width: 1000px) {
 	.navbar-fixed #navbar {
 		font-size: .8em;
 	}
@@ -336,7 +336,7 @@ body {
 	display: none;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 660px) {
 	.floating-section-header {
 		display: block;
 	}
@@ -360,7 +360,7 @@ body {
 	display: none;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 660px) {
 	.social-buttons {
 		display: flex;
 	}
