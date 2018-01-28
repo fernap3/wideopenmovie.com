@@ -182,11 +182,11 @@ body {
 	}
 }
 
-.primary-members {
+.members {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	background: #f7f7f7;
+	background: #303030;
 	border-radius: 8px;
 	box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.34), inset 0 0 7px 2px rgba(0,0,0,0.12), inset 0 0 3px 0px rgba(0,0,0,0.3);
 }
@@ -205,17 +205,23 @@ body {
 .member-card {
 	display: flex;
 	margin: 1em;
-    width: 320px;
+    width: calc(100% - 2em);
     border-radius: 8px;
 	overflow: hidden;
 	flex-shrink: 0;
 	flex-direction: column;
-	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2), 0 0 21px -2px rgba(0,0,0,0.3);
 	animation: card-present;
 	animation-duration: 1.5s;
 	animation-timing-function: ease-out;
 	animation-fill-mode: backwards;
-	transition: all .5s ease-out;
+	transition: all .5s cubic-bezier(0.03, 0.41, 0.18, 0.97);
+}
+
+@media screen and (min-width: 420px) {
+	.member-card {
+		width: 320px;
+	}
 }
 
 .member-card:nth-child(2) {
@@ -234,11 +240,31 @@ body {
 .member-headshot {
 	height: 240px;
 	background: white;
+	background-repeat: no-repeat;
+	transition: all .5s cubic-bezier(0.03, 0.41, 0.18, 0.97);
+	background-color: rgba(0,0,0,0); /* Fix for Chrome bug where the background image doesn't get properly cropped by the rounded border */
+}
+
+.masha .member-headshot {
+	background-image: url(images/masha.jpg);
+	background-position: left top -2px;
+}
+
+.gus .member-headshot {
+	background-image: url(images/gus.jpg);
+	background-position: center top -130px;
+	background-size: 340px;
+}
+
+.isabel .member-headshot {
+	background-image: url(images/isabel.jpg);
+	background-position: left top -21px;
+	background-size: 390px;
 }
 
 .member-bio {
 	padding: .9em;
-	background: #060606;
+	background: #424242;
 	color: #e2e2e2;
 }
 
