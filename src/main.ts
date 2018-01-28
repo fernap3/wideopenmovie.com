@@ -43,6 +43,7 @@ class App
 		document.body.appendChild(this.outgoingHeader);
 
 		window.onscroll = () => this.UpdatePageState();
+		window.onresize = () => this.UpdatePageState();
 		this.UpdatePageState();
 	}
 
@@ -152,7 +153,14 @@ class App
 	private ScrollToElement(target: HTMLElement)
 	{
 		const scrollTopInit = document.body.scrollTop;
-		const distance = target.offsetTop - document.body.scrollTop;
+		let distance = target.offsetTop - document.body.scrollTop;
+
+		// If the screen is less than 600px wide, then the pane headers don't
+		// dock to the navbar and we need to let the static headers show on the
+		// page without scrolling under the navbar.
+		if (!window.matchMedia("screen and (min-width: 600px)").matches)
+			distance -= this.navbar.offsetHeight;
+
 		const duration = 600; // in milliseconds
 
 		let startTime: number = null;
