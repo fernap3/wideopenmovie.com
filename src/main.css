@@ -283,10 +283,9 @@ body {
 	flex-wrap: wrap;
 	justify-content: center;
 	margin-top: 2em;
-}
-
-.member-secondary-list > div {
-	margin: 0 1.5em;
+	margin-bottom: 1em;
+	width: 100%;
+	max-width: 900px;
 }
 
 .member-secondary {
@@ -294,6 +293,13 @@ body {
 	padding: 0.8em 1.4em;
 	text-align: center;
 	font-size: .9em;
+}
+
+@media screen and (min-width: 420px) {
+	.member-secondary {
+		min-width: 280px;
+		width: calc(50% - 2.8em);
+	}
 }
 
 .member-secondary-name {
