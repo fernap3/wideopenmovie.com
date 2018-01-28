@@ -280,19 +280,24 @@ body {
 
 .member-secondary-list {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
+	margin-top: 2em;
 }
 
 .member-secondary-list > div {
-	margin-right: 3em;
-}
-
-.member-secondary-list > div:last-child {
-	margin-right: 0;
+	margin: 0 1.5em;
 }
 
 .member-secondary {
 	margin-bottom: 0.6em;
+	padding: 0.8em 1.4em;
+	text-align: center;
+	font-size: .9em;
+}
+
+.member-secondary-name {
+	font-weight: bold;
 }
 
 .video-container {
