@@ -49,6 +49,8 @@ body {
 }
 
 #navbar {
+	position: relative;
+	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 	background: #060606;
@@ -57,18 +59,29 @@ body {
 	height: 50px;
 	width: 100%;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,.1), 0px -8px 54px 0px rgba(0,0,0,0.3);
+	font-size: 4.1vw;
 }
 
 #navbar button {
-	margin-right: 1em;
 	background: transparent;
 	color: white;
 	border: none;
 	cursor: pointer;
-	font-size: 1.1em;
 	font-family: Raleway;
 	font-weight: 200;
 	text-transform: lowercase;
+	font-size: inherit;
+	padding: .5em;
+}
+
+@media screen and (min-width: 600px) {
+	#navbar {
+		font-size: 1.1em;
+	}
+
+	#navbar button {
+		margin-right: 1em;
+	}
 }
 
 #navbar button:focus {
@@ -108,17 +121,11 @@ body {
 	width: 100%;
 	max-width: none;
 	box-shadow: inset 0 -48px 95px 0px rgba(0,0,0,0.1);
+	text-align: center;
 }
 
 #pane-about {
 	height: 200px;
-}
-
-#pane-castcrew {}
-
-#pane-trailer {}
-
-#pane-watch {
 }
 
 #pane-contact {
@@ -132,11 +139,11 @@ body {
 	animation-timing-function: cubic-bezier(0.21, 1.02, 0.36, 1.01);
 	animation-fill-mode: both;
 	font-family: Dosis;
+	font-size: 5.3vw;
 }
 
 .intro-title {
 	text-transform: uppercase;
-	font-size: 6em;
 	font-weight: 300;
 	animation-name: present-in-title;
 	animation-duration: 3s;
@@ -144,6 +151,16 @@ body {
 	animation-delay: 2s;
 	animation-fill-mode: both;
 	font-family: Dosis;
+	font-size: 11.4vw;
+}
+
+@media screen and (min-width: 600px) {
+	.intro-prefix {
+		font-size: 1.5vw;
+	}
+	.intro-title {
+		font-size: 7.4vw;
+	}
 }
 
 .member-primary {
@@ -199,6 +216,13 @@ body {
 	top: 0;
 	left: 0;
 	color: white;
+	display: none;
+}
+
+@media screen and (min-width: 600px) {
+	.floating-section-header {
+		display: block;
+	}
 }
 
 .navbar-underline {
@@ -214,9 +238,15 @@ body {
 	right: 0;
 	top: 0;
 	height: 100%;
-	display: flex;
 	align-items: center;
 	padding-right: 1em;
+	display: none;
+}
+
+@media screen and (min-width: 600px) {
+	.social-buttons {
+		display: flex;
+	}
 }
 
 .social-link {
@@ -227,4 +257,16 @@ body {
 
 .social-link:hover {
 	filter: brightness(80%);
+}
+
+.trailer-video {
+	height: 158px;
+	width: 280px;
+}
+
+@media screen and (min-width: 600px) {
+	.trailer-video {
+		height: 315px;
+		width: 560px;
+	}
 }

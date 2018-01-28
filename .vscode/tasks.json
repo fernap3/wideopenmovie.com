@@ -8,7 +8,11 @@
 			"task": "build-debug",
 			"problemMatcher": [
 				"$tsc"
-			]
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		},
 		{
 			"type": "gulp",

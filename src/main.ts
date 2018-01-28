@@ -17,12 +17,12 @@ class App
 
 				if (sectionId === "home")
 				{
-					this.scrollToElement(document.body);				
+					this.ScrollToElement(document.body);				
 					return;
 				}
 
 				const target = document.querySelector("#pane-" + sectionId + " > .pane-title") as HTMLElement;
-				this.scrollToElement(target);
+				this.ScrollToElement(target);
 			};
 		}
 
@@ -38,20 +38,32 @@ class App
 		document.body.appendChild(this.incomingHeader);
 		document.body.appendChild(this.outgoingHeader);
 
-		window.onscroll = () => this.updatePageState();
-		this.updatePageState();
+		window.onscroll = () => this.UpdatePageState();
+		this.UpdatePageState();
 	}
 
-	private updatePageState()
+	private UpdatePageState()
 	{
-		this.renderIncomingHeader();
-		this.renderOutgoingHeader();
+		this.RenderIncomingHeader();
+		this.RenderOutgoingHeader();
+		this.RenderNavbarUnderline();
 	}
 
-	private renderOutgoingHeader()
+	private RenderNavbarUnderline()
 	{
-		const prevPane = this.getPreviousPane();
-		const curPane = this.getCurrentPane();
+		const curPane = this.GetCurrentPane();
+		const curNavButton = this.navbar.querySelector("[data-sectionlink=" + curPane.id.substr(5) + "]");
+		const curNavButtonRect = curNavButton.getBoundingClientRect();
+		const lineWidth = curNavButtonRect.width - 10;
+		
+		this.navbarUnderline.style.left = curNavButtonRect.left + (curNavButtonRect.width / 2) - (lineWidth / 2) + "px";
+		this.navbarUnderline.style.width = lineWidth + "px";
+	}
+
+	private RenderOutgoingHeader()
+	{
+		const prevPane = this.GetPreviousPane();
+		const curPane = this.GetCurrentPane();
 		if (prevPane && prevPane.id !== "pane-home")
 		{
 			const prevPaneHeader = prevPane.querySelector(".pane-title") as HTMLElement;
@@ -72,18 +84,11 @@ class App
 		{
 			this.outgoingHeader.style.display = "none";
 		}
-
-		// Update navbar underline position
-		const curNavButton = this.navbar.querySelector("[data-sectionlink=" + curPane.id.substr(5) + "]");
-		const curNavButtonRect = curNavButton.getBoundingClientRect();
-		const lineWidth = curNavButtonRect.width - 10;
-		this.navbarUnderline.style.left = curNavButtonRect.left + (curNavButtonRect.width / 2) - (lineWidth / 2) + "px";
-		this.navbarUnderline.style.width = lineWidth + "px";
 	}
 
-	private renderIncomingHeader()
+	private RenderIncomingHeader()
 	{
-		const currentPane = this.getCurrentPane();
+		const currentPane = this.GetCurrentPane();
 		if (currentPane && currentPane.id !== "pane-home")
 		{
 			const paneHeader = currentPane.querySelector(".pane-title") as HTMLElement;
@@ -100,10 +105,10 @@ class App
 		}
 	}
 
-	private getPreviousPane()
+	private GetPreviousPane()
 	{
 		const panes = Array.from(document.querySelectorAll(".pane"));
-		const currentPane = this.getCurrentPane();
+		const currentPane = this.GetCurrentPane();
 
 		for (let i = 0; i < panes.length - 1; i++)
 		{
@@ -112,25 +117,25 @@ class App
 		}
 	}
 
-	private getCurrentPane()
+	private GetCurrentPane()
 	{
 		const panes = Array.from(document.querySelectorAll(".pane")).reverse();
 
 		for (let pane of panes)
 		{
-			if (this.isScrolledPastPane(pane as HTMLElement))
+			if (this.IsScrolledPastPane(pane as HTMLElement))
 				return pane;
 		}
 	}
 
-	private isScrolledPastPane(pane: HTMLElement)
+	private IsScrolledPastPane(pane: HTMLElement)
 	{
 		const navbar = document.getElementById("navbar");
 		const paneBounds = pane.getBoundingClientRect();
 		return paneBounds.top <= navbar.offsetHeight;
 	}
 
-	private scrollToElement(target: HTMLElement)
+	private ScrollToElement(target: HTMLElement)
 	{
 		const scrollTopInit = document.body.scrollTop;
 		const distance = target.offsetTop - document.body.scrollTop;
