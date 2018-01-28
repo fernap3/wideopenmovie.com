@@ -270,3 +270,78 @@ body {
 		width: 560px;
 	}
 }
+
+.material-button {
+	font-weight: bold;
+	font-family: "Roboto";
+	cursor: pointer;
+	outline: none;
+	transition: all .3s ease-out;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+	text-transform: uppercase;
+	border: none;
+	border-radius: 14px;
+}
+
+.material-button:hover {
+	box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+@keyframes dim-to-full {
+	from {
+		opacity: .2;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.crowdfund-button-main {
+	background: #fa1681;
+	color: white;
+	font-size: 17px;
+	padding: 0.7em 3.2em;
+	position: absolute;
+	bottom: 12vh;
+	right: 12vw;
+	animation: 1s ease-in 3s 1 normal both running dim-to-full
+}
+
+.link-button {
+	text-decoration: none;
+}
+
+.crowdfund-button-main:hover {
+	background: #ff4099;
+}
+
+.crowdfund-button-main > div:last-child,
+.moreinfo-button > div:last-child {
+	font-size: 2em;
+}
+
+@keyframes rise {
+	from {
+		transform: translateY(6px);
+	}
+
+	to {
+		transform: translateY(-6px);
+	}
+}
+
+.moreinfo-button {
+	background: #060606;
+	color: white;
+	font-size: 17px;
+	padding: 0.7em 3.2em;
+	position: absolute;
+	bottom: 12vh;
+	left: 12vw;
+	animation: 1s ease-in 3s 1 normal both running dim-to-full,
+	           1s ease-in-out 3.5s infinite alternate both running rise;
+	background-image: url(images/arrow-down.svg);
+	background-size: 46px;
+	background-repeat: no-repeat;
+	background-position: bottom 6px center;
+}

@@ -30,6 +30,9 @@ class App
 		this.navbarUnderline.className = "navbar-underline";
 		this.navbar.appendChild(this.navbarUnderline);
 
+		const moreInfoButton = document.querySelector(".moreinfo-button") as HTMLButtonElement;
+		moreInfoButton.onclick = e => this.ScrollToElement(document.querySelector(".pane-title"));
+
 		const aboutHeader = document.querySelector("#pane-about > h1");
 		this.incomingHeader = aboutHeader.cloneNode(true) as HTMLElement;
 		this.incomingHeader.classList.add("floating-section-header");
