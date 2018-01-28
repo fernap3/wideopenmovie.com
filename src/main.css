@@ -182,9 +182,24 @@ body {
 	}
 }
 
+.primary-members {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .member-primary {
 	display: flex;
 	margin-bottom: 2em;
+	margin-right: 1em;
+    color: #e2e2e2;
+    background: black;
+    width: 480px;
+    border-radius: 8px;
+	overflow: hidden;
+}
+
+.member-primary:last-child {
+	margin-right: 0;
 }
 
 .member-headshot {
