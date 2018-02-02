@@ -96,8 +96,23 @@
 		</div>
 		<div id="pane-contact" class="pane">
 			<h1 class="pane-title">Contact</h1>
-			this is some body text
-			<div><a href="mailto:wideopenmovie@gmail.com">wideopenmovie@gmail.com</a></div>
+			<div class="material-input">
+				<input type="text" id="contact-name" class="contact-input" spellcheck="false" required="required">
+				<label class="contact-name-label">Name</label>
+				<div class="material-input-error">Please enter your name</div>
+			</div>
+			<div class="material-input">
+				<input type="email" id="contact-email" class="contact-input" spellcheck="false" required="required">
+				<label class="contact-email-label">Email</label>
+				<div class="material-input-error">Please enter your email address</div>
+			</div>
+			<div class="material-input">
+				<textarea id="contact-message" class="contact-textarea" required="required"></textarea>
+				<label class="contact-name-label">Message</label>
+				<div class="material-input-error">Please add a message</div>
+			</div>
+			<button type="button" id="contact-submit" class="material-button">Send Message</button>
+			<!-- <div><a href="mailto:wideopenmovie@gmail.com">wideopenmovie@gmail.com</a></div> -->
 		</div>
 	</body>
 </html>

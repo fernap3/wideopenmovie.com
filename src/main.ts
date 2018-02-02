@@ -5,6 +5,10 @@ class App
 	private navbarUnderline: HTMLElement;
 	private navbar: HTMLElement;
 	private navbarFixed: boolean;
+	private nameInput: HTMLInputElement;
+	private emailInput: HTMLInputElement;
+	private messageInput: HTMLButtonElement;
+	private contactSubmit: HTMLButtonElement;
 
 	constructor()
 	{
@@ -41,6 +45,27 @@ class App
 		this.outgoingHeader.classList.add("floating-section-header");
 		document.body.appendChild(this.incomingHeader);
 		document.body.appendChild(this.outgoingHeader);
+
+		this.nameInput = document.getElementById("contact-name") as HTMLInputElement;
+		this.nameInput.onblur = e => {
+			this.nameInput.value = this.nameInput.value.trim();
+			this.nameInput.classList.toggle("nonempty", this.nameInput.value !== "");
+		};
+
+		this.emailInput = document.getElementById("contact-email") as HTMLInputElement;
+		this.emailInput.onblur = e => {
+			this.emailInput.value = this.emailInput.value.trim();
+			this.emailInput.classList.toggle("nonempty", this.emailInput.value !== "");
+		};
+
+		this.messageInput = document.getElementById("contact-message") as HTMLInputElement;
+		this.messageInput.onblur = e => {
+			this.messageInput.value = this.messageInput.value.trim();
+			this.messageInput.classList.toggle("nonempty", this.messageInput.value !== "");
+		};
+
+		this.contactSubmit = document.getElementById("contact-submit") as HTMLButtonElement;
+		this.contactSubmit.onclick = e => this.SubmitContactForm();
 
 		window.onscroll = () => this.UpdatePageState();
 		window.onresize = () => this.UpdatePageState();
@@ -180,6 +205,12 @@ class App
 		}
 
 		requestAnimationFrame(doScroll);
+	}
+
+	private SubmitContactForm(): void
+	{
+		const contactPane = document.getElementById("pane-contact");
+		contactPane.classList.add("validate");
 	}
 }
 
