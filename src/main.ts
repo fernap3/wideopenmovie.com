@@ -207,10 +207,53 @@ class App
 		requestAnimationFrame(doScroll);
 	}
 
-	private SubmitContactForm(): void
+	private async SubmitContactForm()
 	{
 		const contactPane = document.getElementById("pane-contact");
 		contactPane.classList.add("validate");
+
+		if (!this.emailInput.checkValidity() ||
+		    !this.nameInput.checkValidity() ||
+		    !this.messageInput.checkValidity())
+		{
+			return;
+		}
+
+		const email = this.emailInput.value;
+		const name = this.nameInput.value;
+		const message = this.messageInput.value;
+
+		const headers = new Headers();
+		headers.append("Content-Type", "application/json");
+
+		this.contactSubmit.disabled = true;
+
+		const response = (await fetch("https://jf61olseya.execute-api.us-east-1.amazonaws.com/Production/contact",
+		{
+			method: "POST",
+			headers: headers,
+			mode: "cors",
+			body: JSON.stringify({
+				email: email,
+				name: name,
+				message: message
+			})
+		}));
+
+		this.contactSubmit.disabled = false;
+
+		if (response.status < 200 || response.status > 299)
+		{
+			const errorMsg = document.querySelector(".form-submit-error");
+			errorMsg.classList.add("visible");
+		}
+		else
+		{
+			this.contactSubmit.classList.add("complete");
+			setTimeout(() => {
+				this.contactSubmit.classList.remove("complete");
+			}, 3000);
+		}
 	}
 }
 

@@ -617,6 +617,31 @@ body {
 	color: #e2e2e2;
 	padding: 0.7em 1.2em;
 	border-radius: 3px;
+	width: 10em;
+	height: 2.6em;
+	position: relative;
+}
+
+#contact-submit:after {
+	content: "";
+	height: 18px;
+	width: 18px;
+	background-image: url(images/checkmark.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 18px;
+	transition: all .3s cubic-bezier(0.03, 0.41, 0.18, 0.97);
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -9px;
+	margin-top: -9px;
+	opacity: 0;
+}
+
+#contact-submit.complete:after {
+	opacity: 1;
 }
 
 @media screen and (min-width: 600px) {
@@ -624,4 +649,80 @@ body {
 		margin: 0;
 		margin-top: 4em;
 	}
+}
+
+#contact-submit span {
+	transition: all .3s cubic-bezier(0.03, 0.41, 0.18, 0.97);
+	opacity: 1;
+}
+
+#contact-submit[disabled] span,
+#contact-submit.complete span {
+	opacity: 0;
+}
+
+.spinner {
+	display: flex;
+	opacity: 0;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -5px;
+	margin-left: -23px;
+	transition: all .3s cubic-bezier(0.03, 0.41, 0.18, 0.97);
+}
+
+#contact-submit[disabled] .spinner {
+	opacity: 1;
+}
+
+.spinner > div {
+	width: 10px;
+	height: 10px;
+	background-color: white;
+	border-radius: 100%;
+	display: inline-block;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	margin-right: 0.4em;
+}
+
+.spinner > div:last-child {
+	margin-right: 0;
+}
+
+.spinner .bounce1 {
+	animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+	animation-delay: -0.16s;
+}
+
+@keyframes sk-bouncedelay {
+	0%, 80%, 100% { 
+		transform: scale(0);
+	}
+	40% { 
+		transform: scale(1.0);
+	}
+}
+
+.form-submit-error {
+	transition: all .3s cubic-bezier(0.03, 0.41, 0.18, 0.97);
+	opacity: 0;
+	pointer-events: none;
+	margin-top: 1.2em;
+	font-size: .9em;
+}
+
+.form-submit-error a {
+	color: white;
+	text-decoration: underline;
+	text-decoration-style: dashed;
+}
+
+.form-submit-error.visible {
+	opacity: 1;
+	pointer-events: all;
 }
