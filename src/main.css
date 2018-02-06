@@ -785,6 +785,7 @@ img.vimeo {
 .synopsis {
 	line-height: 1.7em;
 	max-width: 500px;
+	padding: 0 1em;
 }
 
 .strikethrough {
