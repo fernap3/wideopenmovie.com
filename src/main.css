@@ -174,10 +174,6 @@ a {
 	text-align: center;
 }
 
-#pane-about {
-	height: 200px;
-}
-
 #pane-contact {
 	min-height: calc(100vh - 2em);
 }
@@ -784,4 +780,13 @@ img.vimeo {
 .form-submit-error.visible {
 	opacity: 1;
 	pointer-events: all;
+}
+
+.synopsis {
+	line-height: 1.7em;
+	max-width: 500px;
+}
+
+.strikethrough {
+	text-decoration: line-through;
 }
