@@ -48,6 +48,12 @@ body {
 	font-weight: 300;
 }
 
+a {
+	color: white;
+	text-decoration: underline;
+	text-decoration-style: dashed;
+}
+
 #navbar {
 	position: relative;
 	position: -webkit-sticky;
@@ -299,6 +305,9 @@ body {
 	padding: .9em;
 	background: #424242;
 	color: #e2e2e2;
+	flex: auto;
+	position: relative;
+	padding-bottom: 4em;
 }
 
 .member-name {
@@ -308,7 +317,44 @@ body {
 .member-desc {
 	margin-top: 1em;
     font-size: 0.9em;
-    font-style: italic;
+	line-height: 1em;
+}
+
+.member-links {
+	font-style: normal;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: .9em;
+	margin-bottom: .9em;
+	margin-right: .9em;
+}
+
+.member-links .social {
+	float: right;
+}
+
+.member-links img {
+	height: 20px;
+	width: 20px;
+}
+
+.member-links img.web {
+	vertical-align: middle;
+	margin-right: .4em;
+}
+
+.member-links .social img {
+	margin-right: .7em;
+}
+
+.member-links .social:first-child img {
+	margin-right: 0;
+}
+
+img.vimeo {
+	border-radius: 3px;
 }
 
 .member-secondary-list {
@@ -721,12 +767,6 @@ body {
 	pointer-events: none;
 	margin-top: 1.2em;
 	font-size: .9em;
-}
-
-.form-submit-error a {
-	color: white;
-	text-decoration: underline;
-	text-decoration-style: dashed;
 }
 
 .form-submit-error.visible {
