@@ -279,8 +279,14 @@ a {
 
 .masha .member-headshot {
 	background-image: url(images/masha.jpg);
-	background-position: left -70px top -40px;
+	background-position: left -100px top -40px;
 	background-size: 510px;
+}
+
+@media screen and (min-width: 420px) {
+	.masha .member-headshot {
+		background-position: left -70px top -40px;
+	}
 }
 
 .gus .member-headshot {
@@ -301,6 +307,12 @@ a {
 	background-size: 390px;
 }
 
+.peter .member-headshot {
+	background-image: url(images/peter.jpg);
+	background-position: left top -40px;
+	background-size: 420px;
+}
+
 .member-bio {
 	padding: .9em;
 	background: #424242;
@@ -317,7 +329,7 @@ a {
 .member-desc {
 	margin-top: 1em;
     font-size: 0.9em;
-	line-height: 1em;
+	line-height: 1.5em;
 }
 
 .member-links {
