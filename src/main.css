@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto:200,300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,700');
 
 @keyframes present-in {
 	from {
@@ -188,13 +188,13 @@ body {
 
 .intro-title {
 	text-transform: uppercase;
-	font-weight: 300;
 	animation-name: present-in-title;
 	animation-duration: 3s;
 	animation-timing-function: ease-out;
 	animation-delay: 2s;
 	animation-fill-mode: both;
-	font-family: Dosis;
+	font-family: Raleway,sans-serif;
+	font-weight: 200;
 	font-size: 11.4vw;
 	margin-bottom: 2em;
 }
