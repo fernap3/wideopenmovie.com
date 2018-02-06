@@ -273,17 +273,24 @@ body {
 
 .masha .member-headshot {
 	background-image: url(images/masha.jpg);
-	background-position: left top -2px;
+	background-position: left -70px top -40px;
+	background-size: 510px;
 }
 
 .gus .member-headshot {
 	background-image: url(images/gus.jpg);
-	background-position: center top -130px;
-	background-size: 340px;
+	background-position: center top;
+	background-size: 570px;
 }
 
 .isabel .member-headshot {
 	background-image: url(images/isabel.jpg);
+	background-position: center top -21px;
+	background-size: 390px;
+}
+
+.diego .member-headshot {
+	background-image: url(images/diego.jpg);
 	background-position: left top -21px;
 	background-size: 390px;
 }
