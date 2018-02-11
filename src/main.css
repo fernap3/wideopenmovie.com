@@ -309,6 +309,12 @@ a {
 	background-size: 420px;
 }
 
+.julie .member-headshot {
+	background-image: url(images/julie.jpg);
+    background-size: 240px;
+    background-position: top -20px center;
+}
+
 .member-bio {
 	padding: .9em;
 	background: #424242;
