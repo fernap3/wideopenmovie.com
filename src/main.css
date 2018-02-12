@@ -797,3 +797,22 @@ img.vimeo {
 .strikethrough {
 	text-decoration: line-through;
 }
+
+.wideopen {
+	font-family: carrinady;
+	font-size: 140px;
+	animation-name: neon-flash;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+@keyframes neon-flash {
+	from {
+		color: #fb1161;
+		text-shadow: 10px 10px 2px #fb11637e;
+	}
+	to {
+		color: #cac4ff;
+		text-shadow: 10px 10px 2px #cac4ff80;
+	}
+}
