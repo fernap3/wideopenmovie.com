@@ -210,7 +210,7 @@ a {
 	text-transform: uppercase;
 	font-family: Carrinady, Raleway, sans-serif;
 	font-weight: 200;
-	font-size: 14.4vw;
+	font-size: 19vw;
 	margin-bottom: 2em;
 	letter-spacing: .05em;
 	animation: 2s ease infinite alternate both running neon-flash;
@@ -223,6 +223,7 @@ a {
 	}
 	.intro-title {
 		font-size: 9.4vw;
+		margin-bottom: 0;
 	}
 }
 
@@ -502,8 +503,8 @@ img.vimeo {
 
 @media screen and (min-width: 600px) {
 	.trailer-video {
-		height: 315px;
-		width: 560px;
+		height: 360px;
+		width: 640px;
 	}
 }
 
@@ -575,8 +576,9 @@ img.vimeo {
 	padding: 0.7em 3.2em;
 	position: absolute;
 	animation: 1s ease-in 3s 1 normal both running dim-to-full;
-	margin: auto;
 	bottom: 124px;
+	left: 50%;
+	margin-left: -101px;
 }
 
 @media screen and (orientation: landscape) {
@@ -593,6 +595,7 @@ img.vimeo {
 		padding: 0.7em 3.2em;
 		bottom: 12vh;
 		right: 12vw;
+		left: auto;
 	}
 }
 
@@ -626,6 +629,8 @@ img.vimeo {
 	padding: 0.7em 3.2em;
 	position: absolute;
 	bottom: 60px;
+	left: 50%;
+	margin-left: -69px;
 	animation: 1s ease-in 3s 1 normal both running dim-to-full,
 	           1s ease-in-out 3.5s infinite alternate both running rise;
 	background-image: url(images/arrow-down.svg);
