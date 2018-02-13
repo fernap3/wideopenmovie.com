@@ -2,6 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:200,300,400,700');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,700');
 
+@font-face {
+	font-family: 'Carrinady';
+	font-style: normal;
+	font-weight: 200;
+	src: local('Carrinady'), url(Carrinady.woff2) format('woff2');
+}
+
 @keyframes present-in {
 	from {
 		transform: translateX(-50px);
@@ -16,13 +23,24 @@
 
 @keyframes present-in-title {
 	from {
-		letter-spacing: .2em;
+		letter-spacing: .05em;
 		opacity: 0;
 	}
 
 	to {
-		letter-spacing: 0.27em;
+		letter-spacing: 0.1em;
 		opacity: 1;
+	}
+}
+
+@keyframes neon-flash {
+	from {
+		color: #fb1161;
+		text-shadow: 0 0 21px #fb11637e;
+	}
+	to {
+		color: #cac4ff;
+		text-shadow: 0 0 21px #cac4ff80;
 	}
 }
 
@@ -190,15 +208,12 @@ a {
 
 .intro-title {
 	text-transform: uppercase;
-	animation-name: present-in-title;
-	animation-duration: 3s;
-	animation-timing-function: ease-out;
-	animation-delay: 2s;
-	animation-fill-mode: both;
-	font-family: Raleway,sans-serif;
+	font-family: Carrinady, Raleway, sans-serif;
 	font-weight: 200;
 	font-size: 11.4vw;
 	margin-bottom: 2em;
+	animation: 2s ease infinite alternate both running neon-flash,
+	           3s ease-out 1 alternate both running present-in-title;
 }
 
 @media screen and (min-width: 600px) {
@@ -796,23 +811,4 @@ img.vimeo {
 
 .strikethrough {
 	text-decoration: line-through;
-}
-
-.wideopen {
-	font-family: carrinady;
-	font-size: 140px;
-	animation-name: neon-flash;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-}
-@keyframes neon-flash {
-	from {
-		color: #fb1161;
-		text-shadow: 10px 10px 2px #fb11637e;
-	}
-	to {
-		color: #cac4ff;
-		text-shadow: 10px 10px 2px #cac4ff80;
-	}
 }
