@@ -210,10 +210,11 @@ a {
 	text-transform: uppercase;
 	font-family: Carrinady, Raleway, sans-serif;
 	font-weight: 200;
-	font-size: 11.4vw;
+	font-size: 14.4vw;
 	margin-bottom: 2em;
-	animation: 2s ease infinite alternate both running neon-flash,
-	           3s ease-out 1 alternate both running present-in-title;
+	letter-spacing: .05em;
+	animation: 2s ease infinite alternate both running neon-flash;
+	           /* 3s ease-out 1 alternate both running present-in-title; */
 }
 
 @media screen and (min-width: 600px) {
@@ -221,7 +222,7 @@ a {
 		font-size: 1.5vw;
 	}
 	.intro-title {
-		font-size: 7.4vw;
+		font-size: 9.4vw;
 	}
 }
 
